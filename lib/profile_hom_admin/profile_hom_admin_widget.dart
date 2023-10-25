@@ -6,25 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'profile_home_model.dart';
-export 'profile_home_model.dart';
+import 'profile_hom_admin_model.dart';
+export 'profile_hom_admin_model.dart';
 
-class ProfileHomeWidget extends StatefulWidget {
-  const ProfileHomeWidget({Key? key}) : super(key: key);
+class ProfileHomAdminWidget extends StatefulWidget {
+  const ProfileHomAdminWidget({Key? key}) : super(key: key);
 
   @override
-  _ProfileHomeWidgetState createState() => _ProfileHomeWidgetState();
+  _ProfileHomAdminWidgetState createState() => _ProfileHomAdminWidgetState();
 }
 
-class _ProfileHomeWidgetState extends State<ProfileHomeWidget> {
-  late ProfileHomeModel _model;
+class _ProfileHomAdminWidgetState extends State<ProfileHomAdminWidget> {
+  late ProfileHomAdminModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ProfileHomeModel());
+    _model = createModel(context, () => ProfileHomAdminModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -58,7 +58,7 @@ class _ProfileHomeWidgetState extends State<ProfileHomeWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           automaticallyImplyLeading: false,
           title: Text(
-            'Home',
+            'oiiii',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Poppins',
                   color: FlutterFlowTheme.of(context).primaryText,

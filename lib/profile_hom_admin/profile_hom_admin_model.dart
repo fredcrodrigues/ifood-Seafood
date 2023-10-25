@@ -1,14 +1,14 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'profile_home_widget.dart' show ProfileHomeWidget;
+import 'profile_hom_admin_widget.dart' show ProfileHomAdminWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ProfileHomeModel extends FlutterFlowModel<ProfileHomeWidget> {
+class ProfileHomAdminModel extends FlutterFlowModel<ProfileHomAdminWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

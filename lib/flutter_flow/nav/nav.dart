@@ -94,11 +94,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => CreateProfileWidget(),
             ),
             FFRoute(
-              name: 'ProfileHome',
-              path: 'profileHome',
+              name: 'ProfileHomAdmin',
+              path: 'profileHomAdmin',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'ProfileHome')
-                  : ProfileHomeWidget(),
+                  ? NavBarPage(initialPage: 'ProfileHomAdmin')
+                  : ProfileHomAdminWidget(),
             ),
             FFRoute(
               name: 'MenuPage',
@@ -123,6 +123,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'CheckoutPage',
               path: 'checkoutPage',
               builder: (context, params) => CheckoutPageWidget(),
+            ),
+            FFRoute(
+              name: 'Login',
+              path: 'login',
+              builder: (context, params) => LoginWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
