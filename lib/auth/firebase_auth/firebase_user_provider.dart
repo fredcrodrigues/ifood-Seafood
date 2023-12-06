@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class CoffeeShopFirebaseUser extends BaseAuthUser {
-  CoffeeShopFirebaseUser(this.user);
+class ProjectCamaronFirebaseUser extends BaseAuthUser {
+  ProjectCamaronFirebaseUser(this.user);
   User? user;
   bool get loggedIn => user != null;
 
@@ -54,17 +54,17 @@ class CoffeeShopFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      CoffeeShopFirebaseUser(user);
+      ProjectCamaronFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> coffeeShopFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> projectCamaronFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = CoffeeShopFirebaseUser(user);
+        currentUser = ProjectCamaronFirebaseUser(user);
         return currentUser!;
       },
     );

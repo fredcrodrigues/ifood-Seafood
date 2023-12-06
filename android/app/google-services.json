@@ -1,95 +1,26 @@
 {
   "project_info": {
-    "project_number": "59964437078",
-    "project_id": "turkish-shop",
-    "storage_bucket": "turkish-shop.appspot.com"
+    "project_number": "247968940876",
+    "project_id": "app-camaron-e8cea",
+    "storage_bucket": "app-camaron-e8cea.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:59964437078:android:d589a9972f49eed82c41f7",
+        "mobilesdk_app_id": "1:247968940876:android:5d15d1f7aa9bfc611185e9",
         "android_client_info": {
           "package_name": "com.mycompany.coffeeshop"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "59964437078-60sqfhpjc8vact4go3j7rgfu4migd1n8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mycompany.coffeeshop",
-            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
-          }
-        },
-        {
-          "client_id": "59964437078-v18urfpauq44nqg9rbj8t57kdda30cor.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAYs4455qYFUzEqvxkxeQdPPiKA3j8wC80"
+          "current_key": "AIzaSyDwefWwUPv7cydK9Szxj6r52nWC9CZ3ES0"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "59964437078-v18urfpauq44nqg9rbj8t57kdda30cor.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "59964437078-4l47pu7raqjfc95d5n5jvarnda5c1iv9.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.mycompany.coffeeshop"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:59964437078:android:0fa6efa11f4bec292c41f7",
-        "android_client_info": {
-          "package_name": "com.mycompany.turkishcoffeeshop"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "59964437078-nigahln68smu9igvte3cjjke0iveuetr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mycompany.turkishcoffeeshop",
-            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
-          }
-        },
-        {
-          "client_id": "59964437078-v18urfpauq44nqg9rbj8t57kdda30cor.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAYs4455qYFUzEqvxkxeQdPPiKA3j8wC80"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "59964437078-v18urfpauq44nqg9rbj8t57kdda30cor.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "59964437078-4l47pu7raqjfc95d5n5jvarnda5c1iv9.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.mycompany.coffeeshop"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

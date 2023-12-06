@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/backend/supabase/supabase.dart';
 import '/auth/base_auth_user_provider.dart';
@@ -80,54 +81,110 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : CreateProfileWidget(),
+          appStateNotifier.loggedIn ? PageLoadUserWidget() : PageLoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : CreateProfileWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? PageLoadUserWidget()
+              : PageLoginWidget(),
           routes: [
             FFRoute(
-              name: 'CreateProfile',
-              path: 'createProfile',
-              builder: (context, params) => CreateProfileWidget(),
+              name: 'pageAdminHome',
+              path: 'pageAdminHome',
+              builder: (context, params) => PageAdminHomeWidget(),
             ),
             FFRoute(
-              name: 'ProfileHomAdmin',
-              path: 'profileHomAdmin',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'ProfileHomAdmin')
-                  : ProfileHomAdminWidget(),
+              name: 'pageClientCheckOut',
+              path: 'CheckOut',
+              builder: (context, params) => PageClientCheckOutWidget(),
             ),
             FFRoute(
-              name: 'MenuPage',
-              path: 'menuPage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'MenuPage')
-                  : MenuPageWidget(),
+              name: 'pageLogin',
+              path: 'pageLogin',
+              builder: (context, params) => PageLoginWidget(),
             ),
             FFRoute(
-              name: 'ProductDetails',
-              path: 'productDetails',
+              name: 'pageClientHome',
+              path: 'pageClientHome',
+              builder: (context, params) => PageClientHomeWidget(),
+            ),
+            FFRoute(
+              name: 'pageAdminClientWeb',
+              path: 'pageAdminClientWeb',
+              builder: (context, params) => PageAdminClientWebWidget(),
+            ),
+            FFRoute(
+              name: 'pageClientPaymentPage',
+              path: 'CheckOutCredit',
               asyncParams: {
-                'productSelection':
-                    getDoc(['MenuItems'], MenuItemsRecord.fromSnapshot),
+                'listShopCart':
+                    getDocList(['shopCart'], ShopCartRecord.fromSnapshot),
               },
-              builder: (context, params) => ProductDetailsWidget(
-                productSelection:
-                    params.getParam('productSelection', ParamType.Document),
+              builder: (context, params) => PageClientPaymentPageWidget(
+                totalPayment: params.getParam('totalPayment', ParamType.double),
+                listShopCart: params.getParam<ShopCartRecord>(
+                    'listShopCart', ParamType.Document, true),
+                refUserAdmin: params.getParam('refUserAdmin',
+                    ParamType.DocumentReference, false, ['Users']),
               ),
             ),
             FFRoute(
-              name: 'CheckoutPage',
-              path: 'checkoutPage',
-              builder: (context, params) => CheckoutPageWidget(),
+              name: 'pageAdminInvoincing',
+              path: 'pageAdminInvoincing',
+              builder: (context, params) => PageAdminInvoincingWidget(),
             ),
             FFRoute(
-              name: 'Login',
-              path: 'login',
-              builder: (context, params) => LoginWidget(),
+              name: 'pageAdminOrders',
+              path: 'pageAdminOrders',
+              builder: (context, params) => PageAdminOrdersWidget(
+                refDate: params.getParam('refDate', ParamType.DateTime),
+                refText: params.getParam('refText', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'loadPage',
+              path: 'loadPage',
+              builder: (context, params) => LoadPageWidget(),
+            ),
+            FFRoute(
+              name: 'pageLoadUser',
+              path: 'pageLoadUser',
+              builder: (context, params) => PageLoadUserWidget(),
+            ),
+            FFRoute(
+              name: 'pageSignUp',
+              path: 'pageSignUp',
+              builder: (context, params) => PageSignUpWidget(),
+            ),
+            FFRoute(
+              name: 'pageAdminProduct',
+              path: 'pageAdminProduct',
+              builder: (context, params) => PageAdminProductWidget(),
+            ),
+            FFRoute(
+              name: 'pageClientPaymentFinished',
+              path: 'CheckOutPageFinished',
+              asyncParams: {
+                'listShop':
+                    getDocList(['shopCart'], ShopCartRecord.fromSnapshot),
+              },
+              builder: (context, params) => PageClientPaymentFinishedWidget(
+                refInvoicing: params.getParam('refInvoicing',
+                    ParamType.DocumentReference, false, ['Invoicing']),
+                refOrder: params.getParam(
+                    'refOrder', ParamType.DocumentReference, false, ['Orders']),
+                listShop: params.getParam<ShopCartRecord>(
+                    'listShop', ParamType.Document, true),
+              ),
+            ),
+            FFRoute(
+              name: 'pageClientOrders',
+              path: 'pageClientOrders',
+              builder: (context, params) => PageClientOrdersWidget(
+                refText: params.getParam('refText', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -296,7 +353,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/createProfile';
+            return '/pageLogin';
           }
           return null;
         },
